@@ -59,8 +59,16 @@ for (const id of ['privacy', 'standards', 'security'])
     `${id}: trust deep link retained`,
   );
 for (const [route, html] of pages) {
-  for (const [, href] of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
-    assert.notEqual(href, '#', `${route}: no placeholder links`);
+  const approvedPlaceholders = new Set([
+    ...products.map((product) => `product:${product.slug}`),
+    ...(route === '/solutions' ? solutions.slice(1).map((solution) => `solution:${solution.id}`) : []),
+  ]);
+  for (const [tag, href] of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*>/g)) {
+    if (href === '#') {
+      const marker = tag.match(/\bdata-placeholder="([^"]+)"/)?.[1];
+      assert.ok(approvedPlaceholders.has(marker), `${route}: unapproved placeholder link`);
+      continue;
+    }
     if (!href.startsWith('/') && !href.startsWith('#')) continue;
     const target = new URL(href.replaceAll('&amp;', '&'), new URL(route, base));
     assert.ok(

@@ -29,6 +29,7 @@ export function PlatformFoundation() {
         {platforms.map(({ slug, name, role }) => (
           <Link
             href="#"
+            data-placeholder={`product:${slug}`}
             key={slug}
             className={`platform-node platform-node-${slug}`}
           >

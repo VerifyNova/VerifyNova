@@ -113,9 +113,9 @@ export function SiteFooter() {
             </div>
             <div>
               <h2>Our ecosystem</h2>
-              <Link href="#">UnifyID</Link>
-              <Link href="#">VChainCred</Link>
-              <Link href="#">ASIL</Link>
+              <Link href="#" data-placeholder="product:unifyid">UnifyID</Link>
+              <Link href="#" data-placeholder="product:vchaincred">VChainCred</Link>
+              <Link href="#" data-placeholder="product:asil">ASIL</Link>
             </div>
             <div>
               <h2>Get in touch</h2>

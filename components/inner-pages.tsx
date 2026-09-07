@@ -286,6 +286,7 @@ export function SolutionsPage() {
                 <Link
                   className="solution-row"
                   href="#"
+                  data-placeholder={`solution:${solution.id}`}
                 >
                   <span className="solution-row-icon">
                     <Icon size={20} strokeWidth={1.5} aria-hidden="true" />

@@ -42,6 +42,7 @@ export function ProductShowcases() {
               <Link
                 className="product-story-link"
                 href="#"
+                data-placeholder={`product:${product.slug}`}
               >
                 <span>Explore {product.name}</span>
                 <ArrowUpRight size={20} aria-hidden="true" />

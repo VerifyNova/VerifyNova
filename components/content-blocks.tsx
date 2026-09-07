@@ -75,7 +75,7 @@ export function ProductCards() {
             <h3>{product.name}</h3>
             <p>{product.description}</p>
             <div className="product-bottom">
-              <Link className="text-link" href="#">
+              <Link className="text-link" href="#" data-placeholder={`product:${product.slug}`}>
                 Explore {product.name}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
