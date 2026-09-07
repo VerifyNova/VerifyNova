@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { analyticsOrigin } from '@/lib/site-config';
 import { contentSecurityPolicy } from '@/lib/security-headers';
 
-/** Apply at the request boundary so the same policy covers pages and errors. */
+/** Runs at the request boundary so the same policy covers pages and errors. */
 export function proxy() {
   const response = NextResponse.next();
   response.headers.set('X-Content-Type-Options', 'nosniff');

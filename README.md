@@ -1,6 +1,6 @@
 # VerifyNova website
 
-Company website for the VerifyNova ecosystem: UnifyID, VChainCred and ASIL. Built with React, TypeScript and the Next.js App Router API on Vinext/Vite. npm is the sole package manager. This is a presentation site: no accounts, database, upload endpoint, simulated contact submission or tracking integration.
+Company website for the VerifyNova ecosystem: UnifyID, VChainCred and ASIL. Built with Next.js (App Router), React and TypeScript. npm is the sole package manager. This is a presentation site: no accounts, database, upload endpoint, simulated contact submission or tracking integration.
 
 ## Local workflow
 
@@ -24,7 +24,7 @@ Measurement is cookieless and off unless configured. Set `ANALYTICS_SCRIPT_URL` 
 
 Set `SITE_URL` to the verified HTTPS company website origin. Set `LAUNCH_APPROVED=true` only after completing `docs/LAUNCH.md`. Without both, search indexing remains disabled and the sitemap is empty. These values are server configuration, not secrets. Do not put credentials in source control.
 
-Build and run the generated `dist/standalone/server.js` using npm start. Use a TLS reverse proxy or managed Node host. Bind the origin privately, configure HTTPS redirects, add HSTS at the trusted TLS edge, and monitor uptime/errors. The current CSP permits inline framework scripts/styles; consider nonces with a supported hosting integration before further interactive features are added. `ws:`/`wss:` connections permit local HMR; narrow production connect-src at the edge if not required.
+Build with `npm run build` and serve with `npm start`, or deploy to any host with first-class Next.js support. Vercel needs no configuration: it detects Next.js from `package.json` and uses the default build command and output. Note that `ANALYTICS_SCRIPT_URL` and `ANALYTICS_SITE_ID` must be available **at build time**, because the pages that read them are prerendered; setting them only as runtime values leaves the measurement tag out of the generated HTML. Use a TLS reverse proxy or managed Node host. Bind the origin privately, configure HTTPS redirects, add HSTS at the trusted TLS edge, and monitor uptime/errors. Request headers, including the content security policy, are set in `proxy.ts`, which is the Next.js request-boundary convention. The current CSP permits inline framework scripts/styles; consider nonces with a supported hosting integration before further interactive features are added. `ws:`/`wss:` connections permit local HMR; narrow production connect-src at the edge if not required.
 
 No public deployment, domain change, DNS operation or external publication has been performed. The project can be deployed after the remaining company and hosting approvals are supplied.
 
