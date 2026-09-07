@@ -1,0 +1,121 @@
+/* Shared mobile refinements, loaded after the page-specific styles. */
+body:has(.mobile-panel) [data-slot='sheet-overlay'] {
+  background: rgb(15 31 42 / 18%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.mobile-panel[data-slot='sheet-content'] {
+  width: min(360px, calc(100% - 24px));
+  max-width: 360px;
+  border: 0;
+  box-shadow: -6px 0 24px rgb(15 31 42 / 10%);
+  padding: max(56px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+  overscroll-behavior: contain;
+}
+.mobile-panel [data-slot='sheet-close'] {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+}
+.mobile-panel nav a {
+  min-height: 48px;
+  padding: 12px;
+  border-bottom: 0;
+  border-radius: 4px;
+}
+.mobile-panel nav a[aria-current='page'] {
+  color: var(--blue);
+  background: var(--blue-tint);
+}
+
+@media (max-width: 900px) {
+  :root { --gutter: 32px; }
+  .lifecycle-stage-title {
+    justify-items: start;
+    text-align: left;
+  }
+  main :is(h1, h2, h3, h4, p, a) { overflow-wrap: break-word; }
+  main :is(.wrap, .editorial-hero, .contact-options, .footer-top) > * { min-width: 0; }
+  .button { max-width: 100%; white-space: normal; text-align: center; }
+  .text-link { max-width: 100%; }
+  .editorial-hero-copy { min-width: 0; }
+  .contact-panel, .home-blockchain-layout { padding: 32px; }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --section: 64px;
+    --gutter: 24px;
+  }
+  .home-hero h1, .editorial-hero h1, .page-hero h1 {
+    font-size: clamp(2rem, 8.5vw, 2.5rem);
+    line-height: 1.12;
+  }
+  .home-hero h1 br, .editorial-hero h1 br,
+  .home-blockchain h2 br { display: none; }
+  .inner-page .policy-intro, .inner-contact .contact-intro {
+    padding-block: 40px 32px;
+    gap: 20px;
+  }
+  .contact-panel, .home-blockchain-layout {
+    padding: 28px 22px;
+    gap: 24px;
+  }
+  .contact-panel .button { width: 100%; }
+  .contact-panel h2, .home-blockchain h2 { font-size: 1.875rem; }
+  .home-blockchain .text-link { align-items: flex-start; }
+  .section-head h2, .blockchain-statement h2 { font-size: 1.875rem; }
+  .policy-contents { padding: 20px; }
+  .policy-contents nav a { min-height: 44px; align-items: center; }
+  .policy-body p, .policy-body li { overflow-wrap: anywhere; }
+  .contact-refresh .contact-aside { padding: 24px 20px; }
+  .contact-options .text-link { min-height: 44px; }
+  .company-mission h2 { font-size: clamp(1.65rem, 6.5vw, 2rem); }
+  .company-mission { padding-inline: 22px; }
+  .blockchain-network-accent { padding: 28px; min-height: 180px; }
+  .product-relationship article { padding: 24px 18px; }
+  .solution-feature { padding: 26px 22px; }
+  .trust-redesign .privacy-responsibilities article,
+  .trust-redesign .security-editorial { padding: 24px 20px; }
+  .trust-minimal-path { grid-template-columns: 1fr; gap: 16px; }
+  .trust-minimal-path li { font-size: 1rem; padding: 16px 8px 0; }
+  .footer-top nav { gap: 28px 16px; }
+  .footer-top nav a { display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+  .footer-bottom { gap: 12px; }
+
+  /* Reflow the opportunities diagram instead of shrinking its labels. */
+  .opportunity-network {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    gap: 12px;
+    padding-block: 24px 0;
+  }
+  .opportunity-network .opportunity-core {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    width: min(180px, 65%);
+    justify-self: center;
+    margin-bottom: 12px;
+  }
+  .opportunity-network .opportunity-branch {
+    grid-column: auto;
+    grid-row: auto !important; /* Overrides desktop row coordinates supplied by the diagram. */
+  }
+  .opportunity-network::before, .opportunity-branch::before,
+  .opportunity-more::before, .opportunity-more a::before { display: none; }
+  .opportunity-branch a, .opportunity-more a {
+    height: 100%;
+    min-height: 52px;
+    display: grid;
+    place-items: center;
+    padding: 14px 10px;
+    overflow-wrap: normal;
+  }
+  .opportunity-more { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 12px; }
+  .opportunity-more a:last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 360px) {
+  .footer-top nav { grid-template-columns: 1fr; }
+  .opportunity-network, .opportunity-more { grid-template-columns: 1fr; }
+}

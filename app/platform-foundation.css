@@ -1,0 +1,162 @@
+.platform-foundation {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+.platform-foundation-nodes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.platform-node-unifyid {
+  --node-ink: var(--blue);
+  --node-tint: var(--blue-tint);
+}
+.platform-node-vchaincred {
+  --node-ink: var(--sage-deep);
+  --node-tint: var(--sage-tint);
+}
+.platform-node-asil {
+  --node-ink: var(--taupe);
+  --node-tint: var(--taupe-tint);
+}
+.platform-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  min-width: 0;
+  padding: 20px;
+  color: var(--blue-ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+.platform-node:hover {
+  border-color: var(--node-ink);
+}
+.platform-node:focus-visible {
+  outline: 2px solid var(--node-ink);
+  outline-offset: 4px;
+}
+.platform-node h2 {
+  color: var(--blue-ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.platform-node-role {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+.platform-foundation-connectors {
+  height: 68px;
+  margin-inline: calc((100% - 24px) / 6);
+}
+.platform-foundation-connectors svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.platform-wire {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.5px;
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
+}
+.platform-foundation-base {
+  display: grid;
+  place-items: center;
+  width: min(280px, 80%);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--paper);
+  box-shadow: 0 12px 32px rgb(27 59 78 / 6%);
+}
+.platform-wire-flow {
+  stroke: var(--blue);
+  stroke-dasharray: 5 95;
+  animation: platform-flow 3s linear infinite;
+}
+@keyframes platform-flow {
+  from { stroke-dashoffset: 5; }
+  to { stroke-dashoffset: -95; }
+}
+.platform-foundation-logo {
+  display: block;
+  width: 56%;
+  height: auto;
+}
+.platform-foundation figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  text-align: center;
+}
+.platform-foundation figcaption svg {
+  flex-shrink: 0;
+  color: var(--sage-deep);
+}
+.platform-foundation figcaption strong {
+  color: var(--blue);
+  font-weight: 550;
+}
+@media (max-width: 900px) {
+  .editorial-hero-products > .platform-foundation {
+    max-width: 800px;
+    justify-self: center;
+  }
+}
+@media (max-width: 560px) {
+  .platform-foundation-nodes {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .platform-node:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    background: var(--line-strong);
+    width: 1px;
+    height: 17px;
+    border-radius: 0;
+    box-shadow: none;
+    left: 50%;
+    bottom: -18px;
+  }
+  .platform-foundation-connectors {
+    height: 32px;
+    margin: 0 50%;
+    border-left: 1px solid var(--line-strong);
+  }
+  .platform-foundation-connectors svg {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .platform-wire-flow {
+    display: none;
+    animation: none;
+  }
+  .platform-node {
+    transition: none;
+  }
+}
